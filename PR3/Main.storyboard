@@ -686,6 +686,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="0e5-fh-aqL" id="fUZ-0F-DcY"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -715,6 +718,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="0e5-fh-aqL" id="Gh2-2T-Ou2"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -748,6 +754,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="0e5-fh-aqL" id="4oF-H3-hP5"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -777,6 +786,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="0e5-fh-aqL" id="cBf-qu-q1O"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -810,6 +822,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="0e5-fh-aqL" id="wUE-BU-Rzm"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -839,6 +854,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="0e5-fh-aqL" id="ArX-ot-rYH"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -868,6 +886,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="0e5-fh-aqL" id="uEV-We-aOc"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7o-x3-U8D">
                                                     <rect key="frame" x="342" y="11.5" width="11" height="21"/>
@@ -927,7 +948,14 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="cityField" destination="7hD-c4-17E" id="O1L-wy-cmX"/>
+                        <outlet property="companyField" destination="M0X-y9-2C2" id="xcb-mN-KC6"/>
+                        <outlet property="incomeField" destination="hJ6-ea-2LN" id="lqV-TU-J5S"/>
+                        <outlet property="nameField" destination="O9Y-Jc-rPf" id="Y4z-Bd-Rhp"/>
+                        <outlet property="occupationField" destination="zsN-MI-pH7" id="Wlh-G0-ebH"/>
                         <outlet property="profileImage" destination="Ugq-9o-ZVf" id="yyi-o6-tJX"/>
+                        <outlet property="streetAddressField" destination="g3s-40-B6U" id="Yg6-Ym-ZXc"/>
+                        <outlet property="surnameField" destination="v8G-Pn-P7O" id="mep-zX-jVW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8P-mL-Ing" userLabel="First Responder" sceneMemberID="firstResponder"/>

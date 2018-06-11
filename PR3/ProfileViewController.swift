@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UITableViewController {
+class ProfileViewController: UITableViewController, UITextFieldDelegate {
     var currentProfile: Profile?
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -27,11 +27,48 @@ class ProfileViewController: UITableViewController {
         profileImage.clipsToBounds = true
         
         currentProfile = loadProfileData()
+        
+        self.nameField.text = currentProfile?.name
+        self.surnameField.text = currentProfile?.surname
+        self.streetAddressField.text = currentProfile?.streetAddress
+        self.cityField.text = currentProfile?.city
+        self.occupationField.text = currentProfile?.occupation
+        self.companyField.text = currentProfile?.company
+        self.incomeField.text = currentProfile?.income.description
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     
     // BEGIN-UOC-4
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+            case nameField:
+                surnameField.becomeFirstResponder()
+            case surnameField:
+                streetAddressField.becomeFirstResponder()
+            case streetAddressField:
+                cityField.becomeFirstResponder()
+            case cityField:
+                occupationField.becomeFirstResponder()
+            case occupationField:
+                companyField.becomeFirstResponder()
+            case companyField:
+                incomeField.becomeFirstResponder()
+            case incomeField:
+                incomeField.resignFirstResponder()
+            default:
+                textField.resignFirstResponder()
+        }
+        
+        return false;
+    }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     // END-UOC-4
     
     
