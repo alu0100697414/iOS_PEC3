@@ -50,7 +50,27 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     }
     
     // BEGIN-UOC-2
+    override func viewDidLoad() {
+        firstField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        secondField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        thirdField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        fourthField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+    }
     
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        switch textField {
+            case firstField:
+                secondField.becomeFirstResponder()
+            case secondField:
+                thirdField.becomeFirstResponder()
+            case thirdField:
+                fourthField.becomeFirstResponder()
+            case fourthField:
+                doAuthentication()
+            default:
+                textField.resignFirstResponder()
+        }
+    }
     // END-UOC-2
     
     func doAuthentication() {
