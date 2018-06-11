@@ -13,6 +13,17 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var thirdField: UITextField!
     @IBOutlet weak var fourthField: UITextField!
     
+    @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var thirdLabel: UILabel!
+    @IBOutlet weak var fourthLabel: UILabel!
+    
+    @IBOutlet weak var pleaseLabel: UILabel!
+    
+    @IBOutlet weak var pleaseVerticalLabelConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backHorizontalButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nextHorizontalButtonConstraint: NSLayoutConstraint!
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // We first check that the user is only entering numeric characters
         let numericSet = CharacterSet.decimalDigits
@@ -84,7 +95,29 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         
         if validCode {
             // BEGIN-UOC-3
-            performSegue (withIdentifier: "SegueToMainNavigation", sender: self)
+            pleaseVerticalLabelConstraint.constant -= 100
+            backHorizontalButtonConstraint.constant += 100
+            nextHorizontalButtonConstraint.constant -= 100
+
+            UIView.animate(
+                withDuration: 1,
+                animations: {
+                    self.firstLabel.alpha = 0
+                    self.firstField.alpha = 0
+                    self.secondLabel.alpha = 0
+                    self.secondField.alpha = 0
+                    self.thirdLabel.alpha = 0
+                    self.thirdField.alpha = 0
+                    self.fourthLabel.alpha = 0
+                    self.fourthField.alpha = 0
+                    
+                    self.view.layoutIfNeeded()
+                },
+                completion: { (finished: Bool) in
+                    self.pleaseLabel.alpha = 0
+                    self.performSegue (withIdentifier: "SegueToMainNavigation", sender: self)
+                }
+            )
             // END-UOC-3
         } else {
             let errorMessage = "Sorry, the entered code is not valid"

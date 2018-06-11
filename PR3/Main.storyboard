@@ -501,10 +501,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backHorizontalButtonConstraint" destination="yKN-4m-OHk" id="Tc2-q3-wTB"/>
                         <outlet property="firstField" destination="0Nb-Hl-lHc" id="LwZ-9q-KZZ"/>
+                        <outlet property="firstLabel" destination="nER-Uv-rTV" id="eKt-DF-p6y"/>
                         <outlet property="fourthField" destination="P5J-xy-r6k" id="eam-M2-mPf"/>
+                        <outlet property="fourthLabel" destination="cLK-qn-WUx" id="SLR-bk-n1n"/>
+                        <outlet property="nextHorizontalButtonConstraint" destination="fiI-Il-aZV" id="DIJ-5N-rTj"/>
+                        <outlet property="pleaseLabel" destination="EN2-sH-t3v" id="FEf-Aj-5Jl"/>
+                        <outlet property="pleaseVerticalLabelConstraint" destination="Goa-6D-xts" id="0W5-Ke-O2r"/>
                         <outlet property="secondField" destination="1kT-Bg-b3C" id="dg4-9H-T8Z"/>
+                        <outlet property="secondLabel" destination="0JQ-OG-vI0" id="5md-5B-BAr"/>
                         <outlet property="thirdField" destination="Eqh-Oh-sDc" id="Daj-5j-HGK"/>
+                        <outlet property="thirdLabel" destination="lOS-qe-FXh" id="5CU-qh-yeE"/>
                         <segue destination="lnl-au-HBQ" kind="show" identifier="SegueToMainNavigation" id="wWO-IB-d6h"/>
                     </connections>
                 </viewController>
