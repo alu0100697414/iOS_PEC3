@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -78,6 +78,33 @@ class LoginViewController: UIViewController {
     }
     
     // BEGIN-UOC-1
+    func login() {
+        if let username = usernameField.text, let password = passwordField.text {
+            let canLogin = Services.validate(username: username, password: password)
+            
+            if canLogin {
+                performSegue(withIdentifier: "SegueToAuthentication", sender: self)
+            } else {
+                let errorMessage = "Sorry, the username and password are invalid"
+                let errorTitle = "We could not log you in"
+                
+                Utils.show(Message: errorMessage, WithTitle: errorTitle, InViewController: self)
+            }
+        }
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+            case usernameField:
+                passwordField.becomeFirstResponder()
+            case passwordField:
+                passwordField.resignFirstResponder()
+                login()
+            default:
+                textField.resignFirstResponder()
+        }
+        
+        return false;
+    }
     // END-UOC-1
 }
