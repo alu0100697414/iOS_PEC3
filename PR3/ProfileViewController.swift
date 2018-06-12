@@ -99,12 +99,29 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     // END-UOC-5
     
     // BEGIN-UOC-6
+    func imageURL(forKey key: String) -> URL {
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectoty = documentsDirectories.first!
+        
+        return documentDirectoty.appendingPathComponent(key)
+    }
+    
     func loadProfileImage() -> UIImage? {
-        return UIImage(named: "EmptyProfile.png")
+        let url = imageURL(forKey: "profile_image")
+        
+        guard let imageFromDisk = UIImage(contentsOfFile: url.path) else {
+            return UIImage(named: "EmptyProfile.png")
+        }
+        
+        return imageFromDisk
     }
     
     func saveProfileImage(_ image: UIImage) {
+        let url = imageURL(forKey: "profile_image")
         
+        if let data = UIImageJPEGRepresentation(image, 1) {
+            let _ = try? data.write(to: url, options: [.atomic])
+        }
     }
     // END-UOC-6
     
