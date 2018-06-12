@@ -99,7 +99,7 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     // END-UOC-5
     
     // BEGIN-UOC-6
-    func imageURL(forKey key: String) -> URL {
+    func getURL(forKey key: String) -> URL {
         let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectoty = documentsDirectories.first!
         
@@ -107,7 +107,7 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     }
     
     func loadProfileImage() -> UIImage? {
-        let url = imageURL(forKey: "profile_image")
+        let url = getURL(forKey: "profile_image")
         
         guard let imageFromDisk = UIImage(contentsOfFile: url.path) else {
             return UIImage(named: "EmptyProfile.png")
@@ -117,7 +117,7 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     }
     
     func saveProfileImage(_ image: UIImage) {
-        let url = imageURL(forKey: "profile_image")
+        let url = getURL(forKey: "profile_image")
         
         if let data = UIImageJPEGRepresentation(image, 1) {
             let _ = try? data.write(to: url, options: [.atomic])
@@ -127,12 +127,12 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     
     // BEGIN-UOC-7
     func saveProfileData(_ currentProfile: Profile) {
-        let url = imageURL(forKey: "profile_data")
+        let url = getURL(forKey: "profile_data")
         NSKeyedArchiver.archiveRootObject(currentProfile, toFile: url.path)
     }
     
     func loadProfileData() -> Profile {
-        let url = imageURL(forKey: "profile_data")
+        let url = getURL(forKey: "profile_data")
         if let profile = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? Profile {
             return profile
         }
