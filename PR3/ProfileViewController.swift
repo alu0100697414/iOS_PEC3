@@ -127,12 +127,22 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     
     // BEGIN-UOC-7
     func saveProfileData(_ currentProfile: Profile) {
-        
+        let url = imageURL(forKey: "profile_data")
+        NSKeyedArchiver.archiveRootObject(currentProfile, toFile: url.path)
     }
     
     func loadProfileData() -> Profile {
-        let profile = Profile(name: "Sherlock", surname: "Holmes", streetAddress: "221B Baker Street", city: "London", occupation: "Detective", company: "Self-employed", income: 500)
-        return profile
+        let url = imageURL(forKey: "profile_data")
+        if let profile = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? Profile {
+            return profile
+        }
+        
+        return Profile()
+    }
+    
+    @IBAction func saveButton(_ sender: UIButton) {
+        let currentProfile = Profile(name: nameField.text!, surname: surnameField.text!, streetAddress: streetAddressField.text!, city: cityField.text!, occupation: occupationField.text!, company: companyField.text!, income: Int(incomeField.text!)!)
+        saveProfileData(currentProfile)
     }
     // END-UOC-7
 }

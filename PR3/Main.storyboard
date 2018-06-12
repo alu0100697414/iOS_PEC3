@@ -925,6 +925,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaA-bi-9M7">
                                                     <rect key="frame" x="147" y="6" width="81" height="30"/>
                                                     <state key="normal" title="Save profile"/>
+                                                    <connections>
+                                                        <action selector="saveButton:" destination="0e5-fh-aqL" eventType="touchUpInside" id="zEO-M0-LS8"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
