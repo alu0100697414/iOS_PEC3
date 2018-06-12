@@ -658,6 +658,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qwg-Zf-eby">
                                                     <rect key="frame" x="115" y="136" width="144" height="30"/>
                                                     <state key="normal" title="Update profile image"/>
+                                                    <connections>
+                                                        <action selector="takePicture:" destination="0e5-fh-aqL" eventType="touchUpInside" id="LQP-lg-hf7"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UITableViewController, UITextFieldDelegate {
+class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var currentProfile: Profile?
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -73,9 +73,29 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate {
     
     
     // BEGIN-UOC-5
-    //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-    //        saveProfileImage(image)
-    //    }
+    @IBAction func takePicture(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        } else {
+            imagePicker.sourceType = .photoLibrary
+        }
+        
+        imagePicker.delegate = self
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        profileImage.image = image
+        
+        saveProfileImage(image)
+        
+        dismiss(animated: true, completion: nil)
+    }
     // END-UOC-5
     
     // BEGIN-UOC-6
