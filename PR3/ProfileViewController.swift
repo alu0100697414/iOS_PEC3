@@ -43,6 +43,7 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     
     
     // BEGIN-UOC-4
+    // This method handles "return key" events.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
             case nameField:
@@ -66,6 +67,7 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
         return false;
     }
     
+    // Hide keyboard
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -76,6 +78,7 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     @IBAction func takePicture(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         
+        // Check if camera is available. If not, get library
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
         } else {
@@ -88,8 +91,10 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        // Get picked image
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
+        // Set image in UIImageView
         profileImage.image = image
         
         saveProfileImage(image)
@@ -109,8 +114,9 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     func loadProfileImage() -> UIImage? {
         let url = getURL(forKey: "profile_image")
         
+        // Get profile image
         guard let imageFromDisk = UIImage(contentsOfFile: url.path) else {
-            return UIImage(named: "EmptyProfile.png")
+            return UIImage(named: "EmptyProfile.png") // Get empty profile image
         }
         
         return imageFromDisk
@@ -119,6 +125,7 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     func saveProfileImage(_ image: UIImage) {
         let url = getURL(forKey: "profile_image")
         
+        // Save image
         if let data = UIImageJPEGRepresentation(image, 1) {
             let _ = try? data.write(to: url, options: [.atomic])
         }
@@ -128,18 +135,23 @@ class ProfileViewController: UITableViewController, UITextFieldDelegate, UINavig
     // BEGIN-UOC-7
     func saveProfileData(_ currentProfile: Profile) {
         let url = getURL(forKey: "profile_data")
+        
+        // Save profile data
         NSKeyedArchiver.archiveRootObject(currentProfile, toFile: url.path)
     }
     
     func loadProfileData() -> Profile {
         let url = getURL(forKey: "profile_data")
         if let profile = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? Profile {
+            // Get profile data
             return profile
         }
         
+        // Get empty profile
         return Profile()
     }
     
+    // Save button action
     @IBAction func saveButton(_ sender: UIButton) {
         let currentProfile = Profile(name: nameField.text!, surname: surnameField.text!, streetAddress: streetAddressField.text!, city: cityField.text!, occupation: occupationField.text!, company: companyField.text!, income: Int(incomeField.text!)!)
         saveProfileData(currentProfile)

@@ -67,6 +67,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // BEGIN-UOC-1
+    // Login function
     func login() {
         if let username = usernameField.text, let password = passwordField.text {
             let canLogin = Services.validate(username: username, password: password)
@@ -82,6 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // This method handles "return key" events.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
             case usernameField:

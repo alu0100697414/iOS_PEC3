@@ -68,6 +68,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         fourthField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
     }
     
+    // When a UITextField changes...
     @objc func textFieldDidChange(_ textField: UITextField) {
         switch textField {
             case firstField:
@@ -95,6 +96,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         
         if validCode {
             // BEGIN-UOC-3
+            // Animation
             pleaseVerticalLabelConstraint.constant -= 100
             backHorizontalButtonConstraint.constant += 100
             nextHorizontalButtonConstraint.constant -= 100
